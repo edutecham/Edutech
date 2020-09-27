@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a(y+bqv=tz5(@qehh1vx&3j7l*0$&4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['edutechapp.herokuapp.com','https://edutechapp.herokuapp.com/','https://git.heroku.com/edutechapp.git']
+ALLOWED_HOSTS = ['127.0.0.1:8000','edutechapp.herokuapp.com','https://edutechapp.herokuapp.com/','https://git.heroku.com/edutechapp.git']
 
 
 # Application definition
