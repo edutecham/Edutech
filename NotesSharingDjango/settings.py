@@ -21,12 +21,12 @@ TEMPLATES=os.path.join(BASE_DIR,'templates')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 import os
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a(y+bqv=tz5(@qehh1vx&3j7l*0$&4*gvud468g=b3@%8alu!#')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a(y+bqv=tz5(@qehh1vxa3j7l*0$a4*gvud468g=b3@%8alu!#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8000','edutechapp.herokuapp.com','https://edutechapp.herokuapp.com/','https://git.heroku.com/edutechapp.git']
+ALLOWED_HOSTS = ['127.0.0.1','edutechapp.herokuapp.com','https://edutechapp.herokuapp.com/','https://git.heroku.com/edutechapp.git']
 
 
 # Application definition
