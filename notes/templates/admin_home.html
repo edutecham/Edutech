@@ -1,0 +1,57 @@
+{% extends 'admin_nav.html' %}
+{% load static %}
+{% block body %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<style>
+.prjdiv:hover{
+transform:translateY(-10px)
+}
+div .container1{
+background-color:lightgrey;
+border-radius:8px;
+}
+h2, h4{
+ padding:10Px;
+}
+</style>
+<div class="container text-center" style="margin-top:10%;">
+    <div class="row">
+        <div class="col-md-3 prjdiv">
+            <div class="container1">
+            <h2>{{accept}}</h2>
+            <h4 style="color:black">Notes Status</h4>
+            <h5 style="color:black;"></h5>
+            </div>
+        </div>
+        <div  class="col-md-3 prjdiv">
+             <div class="container1">
+            <h2>{{reject}}</h2>
+            <h4 style="color:black">Rejected Notes</h4>
+             </div>
+        </div>
+        <div class="col-md-3 prjdiv">
+            <div class="container1">
+            <h2>{{all}}</h2>
+            <h4 style="color:black">All Notes</h4>
+            <h5 style="color:black;"></h5>
+            </div>
+        </div>
+        <div  class="col-md-3 prjdiv">
+             <div class="container1">
+             <h2>{{use}}</h2>
+            <h4 style="color:black">All Users</h4>      
+             </div>
+        </div>
+    </div>
+</div>
+	<footer class="container pt-2 mt-5 text-center">
+<br>
+<br>
+<br>
+            <p style = "font-size : 20pt;color:#545c3d;font-weight: bold;">
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script>  <span style = "color : brown">|</span> all rights reserved
+                <span style = "color : brown">|</span>
+                <span style = "color : #29a329; font-family: arial black"><b>AM TECHNOLOGIES</b></span>
+            </p>
+    </footer>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'navigation.html' %}
+{% block body %}
+{% load static %}
+
+{% ifequal error "yes" %}
+<script>
+    alert('logged in successfully');
+    window.location=('{% url 'profile' %}');
+</script>
+{% endifequal %}
+{% ifequal error "not" %}
+<script>
+    alert('Username & Password are not Matching');
+</script>
+{% endifequal %}
+<script>
+function myFunction1() {
+  var x = document.getElementById("exampleInputPassword1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
+
+<div class="container-fluid mt-5" style="width:70%;margin-top:10%">
+
+  <div class="row">
+    <div class="col-md-6">
+      <h2 class="text-center" style="font-family: times new roman;"><i class="fa fa-user-plus" aria-hidden="true">  Nem User</i></h2>
+    <hr>
+    <p style="font-family: times new roman;">By creating an account with our website, You will be able to move through the notes uploading and downloading and more.......!</p><br><br><br><br><br>
+    <center><a href="{% url 'signup' %}" class="btn btn-dark text-white  mt-5" >C R E A T E &nbsp;&nbsp;A N &nbsp;&nbsp;A C C O U N T</a></center>
+    </div>
+    <div class="col-md-6" style="font-family: times new roman;">
+      <h2 class="text-center"><i class="fa fa-user-circle" aria-hidden="true">  Login</i></h2><hr>
+
+      <form method="post" action="">
+    {% csrf_token %}
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email Address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="emailid" placeholder="Enter Username" required="required">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd" required="required">
+      <input type="checkbox" onclick="myFunction1()">  Show Password
+      <a hidden="hidden" class="text-Primary" href="{% url 'forget' %}" style="text-align: right;">Forger Password</a>
+  </div>
+  <center><input style="width: 30%;" type="submit" class="btn btn-success mt-2" name="submit" value="L O G I N"></center>
+</form>
+    </div>
+  </div>
+
+</div>
+</div>
+
+{% endblock %}

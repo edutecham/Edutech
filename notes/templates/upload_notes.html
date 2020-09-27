@@ -1,0 +1,156 @@
+{% extends 'usernavigation.html' %}
+{% block body %}
+{% load static %}
+
+<script >
+var branchbyedu = {
+Diploma: ["Diploma in Engineering","Computer Science","Finance","Information Technology","Marketing","Management","Economics","Mental Healthcare","BusinessComputer Science","Business","Accounting and Auditing","Administrative Services","Advance Accounting","Advance Cost Accounting","Banking and Finance","Banking and Insurance","Banking Laws","Banking Management","Banking Services","Consumer Protection","Customs and Central Excise","e-Commerce","Finance, Budget and Accounting","Financial Accounting and Taxation","Financial Service","Income Tax and Company Law","Mother and Child Health and Family Welfare","Operational Research","Statistical Process Control and Operational Research","Stock Analysis and Trading","Tally Software","Taxation","VAT Rules Procedures","Master Diploma in Software Technology","Other"],
+BE: ["Information Technology","Mechanical Engineering","Civil Engineering","Computer Science","Electronics & Telecommunication","Chemical Engineering","Electrical Engineering","Other"],
+BTech: ["Information Technology","Mechanical Engineering","Civil Engineering","Computer Science","Electronics & Telecommunication","Chemical Engineering","Electrical Engineering","Other"],
+ME: ["Information Technology","Mechanical Engineering","Civil Engineering","Computer Science","Electronics & Telecommunication","Chemical Engineering","Electrical Engineering","Other"],
+MTech: ["Information Technology","Mechanical Engineering","Civil Engineering","Computer Science","Electronics & Telecommunication","Chemical Engineering","Electrical Engineering","Other"],
+Bsc: ["Agriculture","Nursing","Horticulture","Zoology","Computer Science","Physics","Biotechnology","Chemistry","Biochemistry","Mathematics","Other"],
+Msc: ["Computer Science","Finance","Information Technology","Marketing","Management","Economics","Mental Healthcare","Business","Other"],
+
+BCom: ["Mathematics", "Accountancy", "Accounting and Taxation", "Accounting and Finance", "Actuarial Science", "Advanced Accountancy", "Advertising and Brand Management", "Applied Economics", "Banking and Finance", "Banking and Insurance", "Banking Management", "Business Administration", "Business Economics", "Communicative English", "Computer Application", "Computer Applications and Informatics", "Computer Science", "Corporate Accountancy", "Corporate Affairs and Administrations", "Corporate Secretaryship", "Customer Service Management", "e-Commerce", "Electronic Education", "Executive Education", "Executive Communication", "Financial Accounting", "Financial Planning", "Foreign Trade Management", "unctional English", "Garment Production Export Management", "Hotel Management and Catering", "Human Resource Management", "Industrial Management", "Information Systems", "Information Technology", "Information Technology and its Application in Business", "Jewellery Design and Technology", "Marketing and Advertising", "Marketing Management", "Money and Financial System", "Office Management and Secretarial Practices", "Principles and Practice of Accountancy", "Principles of Management", "Professional", "Secretarial Practice", "Statistics", "Supply Chain Management", "Tax Procedure and Practice", "Taxation", "Tourism and Travel Management","Other"],
+MCom: ["Accountancy and Business Statistics", "Accountancy", "Accounting and Auditing", "Accounting and Finance", "Accounting and Taxation", "Advanced Accountancy", "Applied Economics", "Bank Management", "Banking and Finance", "Banking and Insurance Management", "Business Administration", "Business Finance", "Business Management", "Business Policy Corporate Governance", "Business Studies", "Co-operative Management", "Computer Applications", "Corporate Accountancy", "Corporate Finance", "Cost Control and Control Accounts", "e-Commerce", "Entrepreneurship", "Finance and Computer Applications", "Finance and Systems", "Finance and Taxation", "Finance", "Finance, Banking and Risk Management", "Financial Management", "Financial Studies", "Foreign Trade Management", "Garment Production and Export Management","Other"],
+
+BA: ["Business Management", "Media", "Music", "Marketing", "Communication", "Mental Healthcare", "Psychology", "Film Studies", "Language Studies", "Political Science", "International Relations", "Theater studies", "Business Administration", "Business", "Tourism","Other"],
+MA: ["Political Science","Teaching", "Area studies", "International Relations", "Cultural Studies", "Media", "Theology", "Communication","Language Studies", "Mental Healthcare", "History", "Film Studies", "Psychology", "Economics", "Other"],
+
+Medical: ["Bachelor of Medicine and Bachelor of Surgery(MBBS)","Bachelor of Unani Medicine & Surgury(BUMS)","Bachelor of Homeopathic Medicine & Surgury(BHMS)","Bachelor of Ayurveda, Medicine & Surgury(BAMS)","Pharmacy","Other"]
+}
+
+function makeSubmenu(value) {
+if(value.length==0) document.getElementById("branchSelect").innerHTML = "<option></option>";
+else {
+var citiesOptions = "";
+for(cityId in branchbyedu[value]) {
+citiesOptions+="<option>"+branchbyedu[value][cityId]+"</option>";
+}
+document.getElementById("branchSelect").innerHTML = citiesOptions;
+}
+}
+function displaySelected() { var country = document.getElementById("educationSelect").value;
+var city = document.getElementById("branchSelect").value;
+}
+function resetSelection() {
+document.getElementById("educationSelect").selectedIndex = 0;
+document.getElementById("branchSelect").selectedIndex = 0;
+}
+</script>
+
+<style>
+.mybtnone:hover{background-color : #800000;
+color : #429E00 ; font-weight : bold
+}
+</style>
+<div class="container">
+    <h2  style = "font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:7%" align="center"><i class="fa fa-upload" aria-hidden="true"></i>   Upload Notes</h2><hr>
+
+  <div class="container-fluid" style="">
+  <div class="row">
+  <div class="col-md-6">
+    <form method="post" action="" enctype="multipart/form-data">
+      {% csrf_token %}
+
+    <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="selectEducation4">Education</label>
+
+        <select class="form-control" name="branch" size="1" id="educationSelect" onchange="makeSubmenu(this.value)" required>
+
+
+        <option disabled="disabled" selected="selected">--Select Education Type--!</option>
+        <option disabled="disabled" value=""><hr></option>
+        <option disabled="disabled" value="">--Engineering technology and science--!</option>
+        <option value="Diploma">Diploma in Engineering(Post HSC Diploma)</option>
+        <option value="BE">Bachelor of Engineering(BE)</option>
+        <option value="Bsc">Bachelor of Science(BSc.)</option>
+        <option value="BTech">Bachelor of Technology(BTech.)</option>
+        <option value="ME">Master of Engineering(ME)</option>
+        <option value="Msc">Master of Science(MSc.)</option>
+        <option value="MTech">Master of Technology(MTech.)</option>
+        <option disabled="disabled" value=""><hr></option>
+
+        <option disabled="disabled" value="">--Atrs and Commerce--!</option>
+        <option value="BCom">Bachelor of Commerce(BCom.)</option>
+        <option value="BA">Bachelor of Arts(BA.)</option>
+        <option value="MCom">Master of Commerce(MCom.)</option>
+        <option value="MA">Master of Arts(MA.)</option>
+        <option disabled="disabled" value=""><hr></option>
+
+        <option disabled="disabled" value="">--Medical Science--!</option>
+        <option value="Medical">Medical</option>
+        <option disabled="disabled" value=""><hr></option>
+
+        <option disabled="disabled" value="">--Other--!</option>
+        <option value="Other">Other</option>
+</select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-12">
+      <label for="selectEducation4">Branch</label>
+      <select id="branchSelect" size="1" name="brch" class="form-control" style="font-family: times new roman;">
+        <option disabled="disabled" selected="selected">--Select Branch--!</option>
+        <option disabled="disabled" value=""><hr></option>
+        <option></option>
+      </select>
+    </div>
+  </div>
+
+      <div class="form-group">
+        <label>Subject</label>
+          <input type="text" class="form-control"  aria-describedby="emailHelp" name="subject">
+      </div>
+
+      <div class="form-group">
+        <label>Notes File</label>
+          <input type = file required name="notesfile"  class="form-control">
+      </div>
+
+      <div class="form-group">
+        <label>File Type</label>
+          <select name = filetype class="form-control" required>
+            <option value="PDF">PDF</option>
+            <option value="PPT">PPT</option>
+            <option value="DOC">DOC/DOCX</option>
+            <option value="TXT">TXT</option>
+            <option value="Image">Image</option>
+            <option value="ZIP">ZIP/RAR</option>
+            </select>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+          <textarea required name=description class="form-control"></textarea>
+      </div>
+     <center><button type="submit" class="btn btn-primary">U P L O A D</button></center>
+    </form>
+  </div>
+
+
+  <div class="col-md-6">
+    <img src="{% static 'images/1.jpg' %}" style="width:90%;height:400px">
+  </div>
+</div>
+
+</div>
+</div>
+
+
+{% ifequal error "no" %}
+<script>
+    alert('Notes Uploaded Successfully');
+    window.location=('{% url 'view_mynotes' %}')
+</script>
+{% endifequal %}
+{% ifequal error "yes" %}
+<script>
+    alert('Something went wrong,Try Again');
+</script>
+{% endifequal %}
+
+
+{% endblock %}

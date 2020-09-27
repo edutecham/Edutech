@@ -1,0 +1,76 @@
+{% extends 'admin_nav.html' %}
+{% block body %}
+{% load static %}
+<style>
+
+  .box{
+  width:300px;
+  padding: 40px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  background:rgba(0,0,0,0.80);
+  color:#ffffb3;
+  text-align: center;
+}
+.box h1{
+  color:white;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: monotype corsiva;
+  font-size: 20pt;
+
+}
+
+
+div.image
+
+  {
+
+  width:100%;
+
+  height:470px;
+  margin-top:1px;
+
+  background:url({% static 'images/status.jpg' %});
+
+  background-repeat:no-repeat;
+
+  background-position:center;
+
+
+
+  border-color:#CD853F;
+
+  }
+
+
+</style>
+<div class="image">
+
+</div>
+<div class="container">
+<div class="container-fluid" style="width:70%;margin-top:10%">
+<form class="box mt-5" method="post" action="">
+    {% csrf_token %}
+      <h1 for="inputState">Change Status</h1>
+      <select id="inputState" class="form-control" name="status">
+        <option disabled="disabled" selected="selected">--Select Status--</option>
+        <option value="accept">Accept</option>
+         <option value="reject">Reject</option>
+      </select>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div>
+
+{% if error %}
+<script>
+    alert('Assign Status Successfully');
+    window.location = "{% url 'view_allnotes' %}";
+</script>
+{% endif %}
+
+{% endblock %}

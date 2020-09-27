@@ -1,0 +1,55 @@
+{% extends 'admin_nav.html' %}
+{% block body %}
+
+<center><h2 style = "font-family : 'Monotype Corsiva' ; color : #E6120E ; font-weight : bold;margin-top:2%">Notes Status</h2></center><hr>
+<div class="container" style="margin-top:5%">
+</div>
+ <div class="container">
+<table class="table table-bordered" id="myTable">
+  <thead>
+  <tr>
+    <th>Sr.No</th>
+      <th>Uploaded By</th>
+    <th>Date</th>
+    <th>Branch&nbsp;&nbsp;&nbsp;</th>
+    <th>Subject</th>
+
+    <th>Download&nbsp;</th>
+    <th>File Type&nbsp;&nbsp;&nbsp;</th>
+    <th>Status&nbsp;</th>
+      <th>Assign Status&nbsp;&nbsp;</th>
+    <th>Action</th>
+  </tr>
+  </thead>
+   <tbody>
+
+{% for i in notes %}
+
+  <tr>
+      <td>{{forloop.counter}}</td>
+       <td>{{i.user.username}}</td>
+    <td>{{i.uploadingdate}} </td>
+    <td>{{i.branch}}</td>
+    <td>{{i.subject}}</td>
+      <td><a href="{{i.notesfile.url}}" download>{{i.notesfile}}</a> </td>
+    <td>{{i.filetype}}</td>
+      <td>{{i.status}}</td>
+      <td><a href="{% url 'edit_status' i.id %}"><button class="button button1">Change Status</button></a>
+      </td>
+    <td><a href="{% url 'delete_notes' i.id %}"><button class="btn btn-danger button1" onclick="return confirm('Are you sure?')">Delete</button></a></td>
+  </tr>
+
+   {% endfor %}
+
+    </tbody>
+</table>
+
+ </div>
+
+<script>
+            var el_up = document.getElementById("GFG_UP");
+
+            el_up.innerHTML =
+                "Click on the LINK for further confirmation.";
+</script>
+{% endblock %}

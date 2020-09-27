@@ -1,0 +1,1 @@
+web: gunicorn NotesSharingDjango.wsgi --log-file -

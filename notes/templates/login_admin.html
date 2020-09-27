@@ -1,0 +1,51 @@
+{% extends 'navigation.html' %}
+{% load static %}
+{% block body %}
+<script>
+function myFunction1() {
+  var x = document.getElementById("mypassword1");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
+
+
+{% ifequal error "yes" %}
+  <script>
+    alert('Logged in Successfully');
+window.location=('{% url 'admin_panal' %}');
+</script>
+{% endifequal %}
+
+{% ifequal error "not" %}
+  <script>
+    alert('Invalid Login Credentials, Try Again....!');
+</script>
+{% endifequal %}
+
+<div class="container mt-5" style="background-color: whitesmoke;">
+  <div class="row">
+  <div class="col-sm-6">
+    <img src="{% static 'images/admin.jpg' %}" class="img-thumbnails my-3" style="width: 100%; height: 300px;">
+  </div>
+  <div class="col-sm-6">
+    <h2 class="text-center" style="font-family: Engraver MT;"><i class="fa fa-lock" aria-hidden="true"></i>  Aministration Login</h2>
+    <form method="POST">
+      {% csrf_token %}
+      <label style="font-family: times new roman;">UserName</label>
+      <input type="text" class="form-control" name="uname" placeholder="Enter your username" style="font-family: times new roman;">
+
+      <label style="font-family: times new roman;">Password:</label>
+      <input type="password" class="form-control" name="pwd" style="font-family: times new roman;" placeholder="Enter Your Password here" id="mypassword1">
+      <input type="checkbox" onclick="myFunction1()">&nbsp;Show Password
+
+
+      <center><input style="width: 40%; " type="submit" class="btn btn-danger mt-2" name="submit" value="A D M I N&nbsp;&nbsp; L O G I N"></center>
+    </form>
+  </div>
+</div>
+</div>
+{% endblock %}

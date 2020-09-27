@@ -1,0 +1,53 @@
+{% extends 'usernavigation.html' %}
+{% load static %}
+{% block body %}
+<div class="container">
+    <h2 style="font-weight:bold;font-family : 'Monotype Corsiva' ; color : #E6120E ;margin-top:7%" align="center"><i class="fa fa-user" aria-hidden="true"></i>   View Profile</h2><hr>
+
+<div  class="container-fluid" style="width:80%;margin-bottom:5%">
+    <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Full Name:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.first_name}} {{pro.user.last_name}}
+        </div>
+    </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Email Id :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.user.username}}
+        </div>
+    </div><hr>
+     <div class="row">
+        <div class="col-md-6">
+            <strong>Contact :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.contact}}
+        </div>
+     </div><hr>
+
+    <div class="row">
+        <div class="col-md-6">
+            <strong>Education :</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.branch}}
+        </div>
+     </div><hr>
+     <hr><div class="row">
+        <div class="col-md-6">
+            <strong>Branch:</strong>
+        </div>
+        <div class="col-md-6">
+            {{pro.brch}}
+        </div>
+    </div><hr>
+
+</div>
+</div>
+{% endblock %}
