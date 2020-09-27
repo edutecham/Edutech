@@ -95,6 +95,20 @@
 
 
 }
+ nav button{
+  box-shadow: 0 0 30px 0 rgba(0,0.5,1.0,0.5);
+  transform: translate3d(-10px);
+  border: double;
+  border-radius: 10px;
+
+  } 
+ nav button:hover{
+  box-shadow: 0 0 30px 0 rgba(0,0.5,1.0,0.5);
+  transform: translate3d(-10px);
+  border: double;
+  border-radius: 10px;
+
+  } 
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -108,7 +122,11 @@
   <!-- Brand -->
   <a class="navbar-brand" href="#" style="color:lime;"></a>
 
-
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mymenu">
+    <span class="navbar-toggler-icon">|||</span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-center " id="mymenu">
+    <ul class="navbar-nav justify-content-center" style="">
   <!-- Links -->
   <ul class="navbar-nav" style="font-family: arial;">
 
@@ -116,7 +134,7 @@
 
 
    <li class="nav-item" >
-      <a class="nav-link" href="{% url 'profile' %}" style="color:white;margin-left:200px;"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
+      <a class="nav-link" href="{% url 'profile' %}" style="color:white;"><i class="fa fa-home" aria-hidden="true"></i>  Home</a>
     </li>
      &nbsp;&nbsp;&nbsp;&nbsp;
     <li class="nav-item">
@@ -130,14 +148,13 @@
     <li class="nav-item">
       <a class="nav-link" href="{% url 'viewallnotesuser' %}" style="color:white;"><i class="fa fa-sticky-note-o" aria-hidden="true"></i>  View All Notes</a>
     </li>
-</div>
     &nbsp;&nbsp;&nbsp;&nbsp;
    <li> <a class="nav-link" href="{% url 'logout1' %}" style="color:white;"><i class="fa fa-sign-out" aria-hidden="true"></i>  Signout</a>
     </li>
     &nbsp;&nbsp;&nbsp;&nbsp;
       <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"><i class="fa fa-user-circle" aria-hidden="true"></i>  Welcome {{request.user.first_name}}
-  </button>
+  <a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"><i class="fa fa-user-circle" aria-hidden="true"></i>  Welcome {{request.user.first_name}}
+  </a>
   <div class="dropdown-menu">
     <a class="dropdown-item nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
     <a class="dropdown-item nav-link" href="{% url 'change_password' %}">Change Password</a>
@@ -145,6 +162,7 @@
 </div>
 
 </ul>
+</div>
 </nav>
 {% block body %}
 

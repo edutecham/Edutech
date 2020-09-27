@@ -98,6 +98,20 @@
 
 
 }
+ nav button{
+  box-shadow: 0 0 30px 0 rgba(0,0.5,1.0,0.5);
+  transform: translate3d(-10px);
+  border: double;
+  border-radius: 10px;
+
+  } 
+ nav button:hover{
+  box-shadow: 0 0 30px 0 rgba(0,0.5,1.0,0.5);
+  transform: translate3d(-10px);
+  border: double;
+  border-radius: 10px;
+
+  } 
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -107,9 +121,13 @@
     <span style="color: #545c3d;">EDU</span><span style="color: #29a329;">TECH </span><span style=" font-family: cooper; font-size: 20px; color: #272725 ;opacity: 0.3;">A Notes Sharing Site</span></h3></div>
 
   <nav class="navbar navbar-expand-sm justify-content-left " style="background-color: #595959; ">  
-    <ul class="navbar-nav" >
+   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mymenu">
+    <span class="navbar-toggler-icon">|||</span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-center " id="mymenu">
+    <ul class="navbar-nav justify-content-center" style="">
       <li class="nav-item" >
-      <a class="nav-link" href="{% url 'admin_home' %}" style="font-family: arial;color:white;margin-left:50px;"><i class="fa fa-home" aria-hidden="true"></i>  Dashboard</a>
+      <a class="nav-link" href="{% url 'admin_home' %}" style="font-family: arial;color:white;margin-left:px;"><i class="fa fa-home" aria-hidden="true"></i>  Dashboard</a>
     </li>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <li class="nav-item">
@@ -129,9 +147,9 @@
     </li>
          &nbsp;&nbsp;&nbsp;&nbsp;
          <div class="btn-group">
-  <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; "><i class="fa fa-user" aria-hidden="true"></i>
+  <a type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white; "><i class="fa fa-user" aria-hidden="true"></i>
     Welcome {{ request.user.username }}
-  </button>
+  </a>
   <div class="dropdown-menu">
     <li><a class="dropdown-item nav-link" href="{% url 'logout' %}">Signout</a></li>
     </div>
