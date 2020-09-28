@@ -7,6 +7,7 @@ from datetime import date
 from django.conf import settings
 import json
 import urllib
+import requests
 
 # Create your views here.
 def Home(request):
