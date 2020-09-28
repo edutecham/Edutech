@@ -4,6 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
 from datetime import date
+from django.conf import settings
+import json
+import urllib
 
 # Create your views here.
 def Home(request):
@@ -107,8 +110,18 @@ def Change_Password(request):
         o = request.POST['pwd3']
         if c == n:
             u = User.objects.get(username__exact=request.user.username)
-            u.set_password(n)
-            u.save()
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,'response': recaptcha_response}
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            if result['success']:
+                u.set_password(n)
+                u.save()
+            else:
+                return redirect('change_password')
             error = "yes"
         else:
             error = "not"

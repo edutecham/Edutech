@@ -3,6 +3,36 @@
 {% load static %}
 
 {% ifequal error "yes" %}
+     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <script>
+            $(function() {
+
+                if (localStorage.chkbx && localStorage.chkbx != '') {
+                    $('#remember_me').attr('checked', 'checked');
+                    $('#exampleInputEmail1').val(localStorage.usrname);
+                    $('#exampleInputPassword1').val(localStorage.pass);
+                } else {
+                    $('#remember_me').removeAttr('checked');
+                    $('#exampleInputEmail1').val('');
+                    $('#exampleInputPassword1').val('');
+                }
+
+                $('#remember_me').click(function() {
+
+                    if ($('#remember_me').is(':checked')) {
+                        // save username and password
+                        localStorage.usrname = $('#exampleInputEmail1').val();
+                        localStorage.pass = $('#exampleInputPassword1').val();
+                        localStorage.chkbx = $('#remember_me').val();
+                    } else {
+                        localStorage.usrname = '';
+                        localStorage.pass = '';
+                        localStorage.chkbx = '';
+                    }
+                });
+            });
+
+        </script>
 <script>
     alert('logged in successfully');
     window.location=('{% url 'profile' %}');
@@ -46,7 +76,8 @@ function myFunction1() {
   <div class="form-group">
     <label for="exampleInputPassword1">Password</label>
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pwd" required="required">
-      <input type="checkbox" onclick="myFunction1()">  Show Password
+      <input type="checkbox" onclick="myFunction1()" value="Show Password">  Show Password
+       <input type="checkbox" value="remember-me" id="remember_me"> Remember me
       <a hidden="hidden" class="text-Primary" href="{% url 'forget' %}" style="text-align: right;">Forger Password</a>
   </div>
   <center><input style="width: 30%;" type="submit" class="btn btn-success mt-2" name="submit" value="L O G I N"></center>
@@ -58,3 +89,19 @@ function myFunction1() {
 </div>
 
 {% endblock %}
+
+
+
+
+ 
+        <div class="container">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="text" class="input-block-level" placeholder="Email address" id='username'>
+                <input type="password" class="input-block-level" placeholder="Password" id="pass">
+                <label class="checkbox">
+                    <input type="checkbox" value="remember-me" id="remember_me"> Remember me
+                </label>
+                <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+            </form>
+        </div>
